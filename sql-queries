@@ -1,4 +1,21 @@
 #SQL - queries
+use stt_db;
+
+create table authorities (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	username varchar(50),
+	authority varchar(50)
+);
+create table users (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	username varchar(10) NOT NULL,
+	password varchar(255) NOT NULL,
+	enabled int NOT NULL,
+	role_id int NOT NULL,
+	FOREIGN KEY(role_id) REFERENCES authorities(id)
+);
+
+
 
 insert into authorities (username, authority) VALUES("bibi", "ADMIN");
 insert into users(username,password, enabled, role_id) VALUES("bibi", "b1c4d759ac9978adaead84393b6d5afebcbb842a2f075b855120375225e0d7552fbc0d08f044b2bd",1,1)
