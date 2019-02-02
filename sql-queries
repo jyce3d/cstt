@@ -26,14 +26,16 @@ create table studies (
 create table segments (
 	id int AUTO_INCREMENT PRIMARY KEY,
 	code varchar(10) NOT NULL,
-	name varchar(50) NOT NULL
+	description varchar(50) NOT NULL
 );
+insert into segments (code, description) values('ESC','Escalation segment');
 
 create table arms (
 	id int AUTO_INCREMENT PRIMARY KEY,
 	code varchar(10) NOT NULL,
-	name varchar(50) NOT NULL
+	description varchar(50) NOT NULL
 );
+insert into arms (code, description) values('CRC','Colorectal Cancer');
 
 create table lnksegtoarms (
 	id int AUTO_INCREMENT PRIMARY KEY,
@@ -44,6 +46,22 @@ create table lnksegtoarms (
 	FOREIGN KEY(segment_id) REFERENCES segments(id),
 	FOREIGN KEY(arm_id) REFERENCES arms(id)
 );
+insert into lnksegtoarms (study_id, segment_id, arm_id) values(1,1,1 );
+
+create table study_event_def (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	code varchar(10) NOT NULL,
+	description varchar(50) NOT NULL
+);
+
+insert into study_event_def (code, description) values('ICF','Inform consent signed');
+insert into study_event_def (code, description) values('APH','Apheresis');
+insert into study_event_def (code, description) values('INJ1','Infusion 1');
+insert into study_event_def (code, description) values('INJ2','Infusion 2');
+insert into study_event_def (code, description) values('INJ3','Infusion 3');
+insert into study_event_def (code, description) values('INJ1','Infusion 1');
+insert into study_event_def (code, description) values('SAFE','Safety');
+insert into study_event_def (code, description) values('EFCY','Efficacty');
 
 create table cohorts (
 	id int AUTO_INCREMENT PRIMARY KEY,
@@ -51,26 +69,41 @@ create table cohorts (
 	study_id int NOT NULL,
 	code varchar(10) NOT NULL,
 	description varchar(255),
-	interval float,
-	predecessor_id int,
-	after_event_id int,
-	target_event_id int,
-	bc_interval float,
+	predecessor_id int, 
+	bc_interval_ float(8,2),
 	bc_after_event_id int,
 	bc_target_event_id int,
 	FOREIGN KEY(study_id) REFERENCES studies(id),
 	FOREIGN KEY(armtoseg_id) REFERENCES lnksegtoarms(id)
 );
-
+insert into cohorts (armtoseg_id, study_id, code, description ) values(1,1, 'DL-1', 'Dose level 1' );
+insert into cohorts (armtoseg_id, study_id, code, description, predecessor_id, bc_interval_, bc_after_event_id, bc_target_event_id) 
+values(1,1, 'DL-2', 'Dose level 2', 1, 7, 4, 3  );
+insert into cohorts (armtoseg_id, study_id, code, description, predecessor_id, bc_interval_, bc_after_event_id, bc_target_event_id) 
+values(1,1, 'DL-3', 'Dose level 3', 2, 14, 4, 3  );
 create table cohort_ranges(
 	id int AUTO_INCREMENT PRIMARY KEY,
 	cohort_id int NOT NULL,
 	begin int NOT NULL,
 	end int NOT NULL,
-	interval float,
+	interval_ float (8,2),
 	after_event_id int,
 	target_event_id int
 );
+insert into cohort_ranges (cohort_id, begin, end) 
+values (1,1,1);
+insert into cohort_ranges (cohort_id, begin, end, interval_,after_event_id, target_event_id) 
+values (1,2,3, 7, 4,3);
+
+insert into cohort_ranges (cohort_id, begin, end) 
+values (2,1,1);
+insert into cohort_ranges (cohort_id, begin, end, interval_,after_event_id, target_event_id) 
+values (2,2,3, 7, 4,3);
+
+insert into cohort_ranges (cohort_id, begin, end) 
+values (3,1,1);
+insert into cohort_ranges (cohort_id, begin, end, interval_,after_event_id, target_event_id) 
+values (3,2,3, 7, 4,3);
 
 insert into studies (code, name, description, start_date) values ('LYNX', 'LYNX', 'Phase I randomized dose escalation Trial with cross-over', '2018-05-18');
 insert into studies (code, name, description, start_date) values ('ALLOLYNX', 'ALLOLYNX', 'Phase II randomized Trial with cross-over', '2018-12-18');
