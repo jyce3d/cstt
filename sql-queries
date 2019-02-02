@@ -24,6 +24,7 @@ create table studies (
 )
 
 insert into studies (code, name, description, start_date) values ('LYNX', 'LYNX', 'Phase I randomized dose escalation Trial with cross-over', '2018-05-18');
+insert into studies (code, name, description, start_date) values ('ALLOLYNX', 'ALLOLYNX', 'Phase II randomized Trial with cross-over', '2018-12-18');
 
 
 insert into authorities (username, authority) VALUES("bibi", "ADMIN");
