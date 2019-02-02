@@ -15,6 +15,15 @@ create table users (
 	FOREIGN KEY(role_id) REFERENCES authorities(id)
 );
 
+create table studies (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	code varchar(10) NOT NULL,
+	name varchar(50) NOT NULL,
+	description varchar(1024),
+	start_date DATE
+)
+
+insert into studies (code, name, description, start_date) values ('LYNX', 'LYNX', 'Phase I randomized dose escalation Trial with cross-over', '2018-05-18');
 
 
 insert into authorities (username, authority) VALUES("bibi", "ADMIN");
