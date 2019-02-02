@@ -21,7 +21,56 @@ create table studies (
 	name varchar(50) NOT NULL,
 	description varchar(1024),
 	start_date DATE
-)
+);
+
+create table segments (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	code varchar(10) NOT NULL,
+	name varchar(50) NOT NULL
+);
+
+create table arms (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	code varchar(10) NOT NULL,
+	name varchar(50) NOT NULL
+);
+
+create table lnksegtoarms (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	study_id int NOT NULL,
+	segment_id int NOT NULL,
+	arm_id int NOT NULL,
+	FOREIGN KEY(study_id) REFERENCES studies(id),
+	FOREIGN KEY(segment_id) REFERENCES segments(id),
+	FOREIGN KEY(arm_id) REFERENCES arms(id)
+);
+
+create table cohorts (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	armtoseg_id int NOT NULL,
+	study_id int NOT NULL,
+	code varchar(10) NOT NULL,
+	description varchar(255),
+	interval float,
+	predecessor_id int,
+	after_event_id int,
+	target_event_id int,
+	bc_interval float,
+	bc_after_event_id int,
+	bc_target_event_id int,
+	FOREIGN KEY(study_id) REFERENCES studies(id),
+	FOREIGN KEY(armtoseg_id) REFERENCES lnksegtoarms(id)
+);
+
+create table cohort_ranges(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	cohort_id int NOT NULL,
+	begin int NOT NULL,
+	end int NOT NULL,
+	interval float,
+	after_event_id int,
+	target_event_id int
+);
 
 insert into studies (code, name, description, start_date) values ('LYNX', 'LYNX', 'Phase I randomized dose escalation Trial with cross-over', '2018-05-18');
 insert into studies (code, name, description, start_date) values ('ALLOLYNX', 'ALLOLYNX', 'Phase II randomized Trial with cross-over', '2018-12-18');
