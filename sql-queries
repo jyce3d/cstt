@@ -125,7 +125,7 @@ create table sites (
 	type_id int,
 	code varchar(10),
 	label varchar(50),
-	FOREIGN KEY(country_id) REFERENCES country(id),
+	FOREIGN KEY(country_id) REFERENCES countries(id)
 );
 insert into sites (country_id, type_id, code, label) values (1, 1, '110', 'UZF');
 
@@ -155,49 +155,49 @@ create table study_event_ref (
 );
 
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,1,1, NULL, NULL);
+values (1,1,1, NULL, NULL, NULL);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,1,2, 1, 14);
+values (1,1,2, 1, NULL, 14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,1,3, 2, 7);
+values (1,1,3, 2, NULL,7);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,1,4, 3, 14);
+values (1,1,4, 3, NULL,14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,1,5, 4, 21);
+values (1,1,5, 4, NULL,21);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,1,7, 5, 14);
+values (1,1,7, 5, NULL,14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,1,8, 6, 7);
+values (1,1,8, 6, NULL,7);
 
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,2,1, NULL, NULL);
+values (1,2,1, NULL, NULL, NULL);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,2,2, NULL, NULL, 8, 14);
+values (1,2,2, 8, NULL, 14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,2,3, NULL, NULL, 9, 7);
+values (1,2,3, 9, NULL,7);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,2,4, NULL, NULL, 10, 14);
+values (1,2,4, 10, NULL,14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,2,5, NULL, NULL, 11, 21);
+values (1,2,5, 11, NULL,21);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,2,7, NULL, NULL, 12, 14);
+values (1,2,7, 12, NULL,14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,2,8, NULL, NULL, 13, 7);
+values (1,2,8, 13, NULL,7);
 
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,3,1, NULL, NULL);
+values (1,3,1, NULL, NULL,NULL);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,3,2, NULL, NULL, 14, 14);
+values (1,3,2, 14, NULL,14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,3,3, NULL, NULL, 15, 7);
+values (1,3,3, 15, NULL,7);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,3,4, NULL, NULL, 16, 14);
+values (1,3,4, 16, NULL,14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,3,5, NULL, NULL), 17, 21);
+values (1,3,5, 17, NULL,21);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,3,7, NULL, NULL, 18, 14);
+values (1,3,7, 18, NULL,14);
 insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecessor_id, site_id, interval_)
-values (1,3,8, NULL, NULL, 19, 7);
+values (1,3,8, 19, NULL,7);
 
 # Calendars
 create table adhoc_calendar (
