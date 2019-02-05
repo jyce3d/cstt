@@ -9,14 +9,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.PlatformTransactionManager;
 
 //import org.springframework.transaction.annotatioen.EnableTransactionManagement;
 
 
 @Configuration
 @ComponentScan({ "be.sdlg.webapps.controllers", "be.sdlg.webapps.dao", "be.sdlg.webapps.services" })
-//@org.springframework.transaction.annotation.EnableTransactionManagement
+@org.springframework.transaction.annotation.EnableTransactionManagement
 @Import({ SecurityConfig.class })
 public class RootConfig {
 	@Bean // par defaut le bean porte le nom de la fonction (ici dataSource).
@@ -35,6 +37,12 @@ public class RootConfig {
 	        jdbcTemplate.setResultsMapCaseInsensitive(true);
 	        return jdbcTemplate;
 	    }
+	   @Bean
+	   public PlatformTransactionManager transactionManager() {
+	       DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+	       transactionManager.setDataSource(dataSource());
+	       return transactionManager;
+	   }
 
 /*	@Bean
 	public LocalSessionFactoryBean sessionFactory() {

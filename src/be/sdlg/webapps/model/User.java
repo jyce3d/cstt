@@ -5,7 +5,7 @@ public class User {
 	public String userName;
 	public Long roleId;
 	public String password;
-	public Boolean enabled;
+	public Long enabled;
 	// Transient
 	public String roleName;
 }
