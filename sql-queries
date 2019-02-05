@@ -42,11 +42,12 @@ create table lnksegtoarms (
 	study_id int NOT NULL,
 	segment_id int NOT NULL,
 	arm_id int NOT NULL,
+	ratio FLOAT (8,2) NOT NULL,
 	FOREIGN KEY(study_id) REFERENCES studies(id),
 	FOREIGN KEY(segment_id) REFERENCES segments(id),
 	FOREIGN KEY(arm_id) REFERENCES arms(id)
 );
-insert into lnksegtoarms (study_id, segment_id, arm_id) values(1,1,1 );
+insert into lnksegtoarms (study_id, segment_id, arm_id, 1) values(1,1,1 );
 
 create table study_event_def (
 	id int AUTO_INCREMENT PRIMARY KEY,
