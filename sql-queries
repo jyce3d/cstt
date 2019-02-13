@@ -201,12 +201,11 @@ insert into study_event_ref (study_id, cohort_id, study_event_def_id, predecesso
 values (1,3,8, 19, NULL,7);
 
 # Calendars
-create table adhoc_calendar (
+create table country_calendar (
 	id int AUTO_INCREMENT PRIMARY KEY,
-	item_id int NOT NULL,
+	country_id int NOT NULL,
 	label varchar(10),
-	closed_date DATE NOT NULL,
-	item_type int
+	closed_date DATE NOT NULL
 );
 insert into adhoc_calendar (item_id, label, closed_date, item_type) values (1, 'Assumption', '2018-08-15', 1);
 
