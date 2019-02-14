@@ -205,7 +205,9 @@ create table country_calendar (
 	id int AUTO_INCREMENT PRIMARY KEY,
 	country_id int NOT NULL,
 	label varchar(10),
-	closed_date DATE NOT NULL
+	closed_date DATE NOT NULL,
+	FOREIGN KEY(country_id) REFERENCES countries(id),
+
 );
 insert into country_calendar (country_id, label, closed_date ) values (1, 'Assumption', '2018-08-15');
 
@@ -213,7 +215,9 @@ create table weekly_calendar (
 	id int AUTO_INCREMENT PRIMARY KEY,
 	site_id int NOT NULL,
 	day_of_week int,
-	closed int
+	closed int,
+	FOREIGN KEY(site_id) REFERENCES sites(id)
+
 );
 
 insert into weekly_calendar ( site_id, day_of_week, closed) values (1, 1, 0);
@@ -229,5 +233,41 @@ create table site_calendar(
 	site_id int NOT NULL,
 	date DATE NOT NULL,
 	status int NOT NULL,
-	study_event_inst_id int NOT NULL
+	FOREIGN KEY(site_id) REFERENCES sites(id)
+
 );
+create table slot_calendar(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	site_calendar_id int NOT NULL,
+	study_event_inst_id int NOT NULL,
+	study_id NOT NULL,
+	FOREIGN KEY(study_id) REFERENCES studies(id),
+	FOREIGN KEY(site_calendar_id) REFERENCES site_calendar(id),
+	FOREIGN KEY(study_event_inst_id) REFERENCES study_event_inst(id)
+);
+
+create table patients(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	study_id int NOT NULL,
+	cohort_id int NOT NULL,
+	site_id int,
+	code varchar(15),
+	create_seq int,
+	status int NOT NULL,
+	FOREIGN KEY(study_id) REFERENCES studies(id),
+	FOREIGN KEY(cohort_id) REFERENCES cohorts(id)
+);
+
+create table study_event_inst (
+	id int AUTO_INCREMENT PRIMARY KEY,	
+	patient_id int NOT NULL,
+	study_id int NOT NULL,
+	baseline date,
+	forecast date,
+	actual date,
+	estimated date,
+	FOREIGN KEY(study_id) REFERENCES studies(id),
+	FOREIGN KEY(patient_id) REFERENCES patients(id)
+
+);
+
