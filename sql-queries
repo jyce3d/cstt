@@ -207,7 +207,7 @@ create table country_calendar (
 	label varchar(10),
 	closed_date DATE NOT NULL
 );
-insert into adhoc_calendar (item_id, label, closed_date, item_type) values (1, 'Assumption', '2018-08-15', 1);
+insert into country_calendar (country_id, label, closed_date ) values (1, 'Assumption', '2018-08-15');
 
 create table weekly_calendar (
 	id int AUTO_INCREMENT PRIMARY KEY,
@@ -224,4 +224,10 @@ insert into weekly_calendar ( site_id, day_of_week, closed) values (1, 5, 0);
 insert into weekly_calendar ( site_id, day_of_week, closed) values (1, 6, 1);
 insert into weekly_calendar ( site_id, day_of_week, closed) values (1, 7, 1);
 
-
+create table site_calendar(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	site_id int NOT NULL,
+	date DATE NOT NULL,
+	status int NOT NULL,
+	study_event_inst_id int NOT NULL
+);
