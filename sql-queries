@@ -239,8 +239,8 @@ create table slot_calendar(
 	id int AUTO_INCREMENT PRIMARY KEY,
 	site_calendar_id int NOT NULL,
 	study_event_inst_id int NOT NULL,
-	study_id int NOT NULL,
-	FOREIGN KEY(study_id) REFERENCES studies(id),
+	site_ref_id int NOT NULL,
+	FOREIGN KEY(site_ref_id) REFERENCES site_ref(id),
 	FOREIGN KEY(site_calendar_id) REFERENCES site_calendar(id),
 	FOREIGN KEY(study_event_inst_id) REFERENCES study_event_inst(id)
 );
