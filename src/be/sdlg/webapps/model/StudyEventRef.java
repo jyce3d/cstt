@@ -1,6 +1,9 @@
 package be.sdlg.webapps.model;
 
-public class StudyEventRef {
+import java.util.List;
+
+
+public class StudyEventRef  {
 	public Long id;
 	public Long studyId;
 	public Long cohortId;

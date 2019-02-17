@@ -42,4 +42,10 @@ public class CohortDao {
 		return queryForObject;
 	    
 	}
+	public List<Cohort> findByArmToSegId(Long id) {
+		List<Cohort> queryForObject = (List<Cohort>) jdbcTemplate.query(strSqlSelect + " where armtoseg_id in (?) ",
+	               new Object[] { id }, new CohortRowMapper());
+		return queryForObject;
+
+	}
 }

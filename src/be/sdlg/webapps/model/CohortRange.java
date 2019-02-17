@@ -1,17 +1,22 @@
 package be.sdlg.webapps.model;
 
-public class CohortRange {
+import java.util.List;
+
+public class CohortRange extends Predecent {
+
+
 	public Long id;
 	public Long cohortId;
 	public Integer begin;
 	public Integer end;
-	public Float interval;
-	public Long afterEventId;
-	public Long targetEventId;
+
 	
 	// transient
 	public Cohort cohort;
-	public StudyEventDef afterEvent;
-	public StudyEventDef targetEvent;
+	public CohortRange(List<StudyEventDef> studyEventDefs) {
+		super(studyEventDefs);
+		// TODO Auto-generated constructor stub
+	}
+
 	
 }

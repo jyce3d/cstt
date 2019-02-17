@@ -41,6 +41,13 @@ public class StudyDao {
 		return queryForObject;
 	    
 	}
+	public Study findOne(Long id) {
+		Object queryForObject = jdbcTemplate.queryForObject(strSqlSelect + " where l.id = ? ",
+	               new Object[] { id }, new StudyRowMapper());
+		return  (Study) queryForObject;
+	    
+	}
+
 	public List<Study> findAll() {
 		List<Study> queryForObject = (List<Study>) jdbcTemplate.query(strSqlSelect , new StudyRowMapper());
 		return queryForObject;

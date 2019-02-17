@@ -17,7 +17,7 @@ public class SiteDao {
 	@Autowired 
 	JdbcTemplate jdbcTemplate;
 	
-	public static final String strSqlSelect  = "SELECT l.id, l.country_id, l.type_id, l.code, l.label, r.code, r.label from sites l inner join countries r on l.counrty_id = r.id ";
+	public static final String strSqlSelect  = "SELECT l.id, l.country_id, l.type_id, l.code, l.label, r.code, r.label from sites l inner join countries r on l.country_id = r.id ";
 	private class SiteRowMapper implements RowMapper<Site> {
 
 		@Override
@@ -29,12 +29,6 @@ public class SiteDao {
 			site.code = rs.getString(4);
 			site.label = rs.getString(5);
 			
-			Country country = new Country();
-			country.id = rs.getLong(2);
-			country.code = rs.getString(6);
-			country.label = rs.getString(7);
-			
-			site.country = country;
 			return site;
 		}
 	}

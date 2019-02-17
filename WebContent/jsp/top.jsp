@@ -45,7 +45,7 @@ var options = {
 	},
 	axisY: {
 		title: "Enrolment",
-		suffix: "K",
+		suffix: "#",
 		minimum: 30
 	},
 	toolTip:{
@@ -65,23 +65,20 @@ var options = {
 		markerType: "square",
 		xValueFormatString: "DD MMM, YYYY",
 		color: "#F08080",
-		yValueFormatString: "#,##0K",
+		yValueFormatString: "#,##0",
 		dataPoints: [
-			{ x: new Date(2017, 10, 1), y: 63 },
-			{ x: new Date(2017, 10, 2), y: 69 },
-			{ x: new Date(2017, 10, 3), y: 65 },
-			{ x: new Date(2017, 10, 4), y: 70 },
-			{ x: new Date(2017, 10, 5), y: 71 },
-			{ x: new Date(2017, 10, 6), y: 65 },
-			{ x: new Date(2017, 10, 7), y: 73 },
-			{ x: new Date(2017, 10, 8), y: 96 },
-			{ x: new Date(2017, 10, 9), y: 84 },
-			{ x: new Date(2017, 10, 10), y: 85 },
-			{ x: new Date(2017, 10, 11), y: 86 },
-			{ x: new Date(2017, 10, 12), y: 94 },
-			{ x: new Date(2017, 10, 13), y: 97 },
-			{ x: new Date(2017, 10, 14), y: 86 },
-			{ x: new Date(2017, 10, 15), y: 89 }
+			{ x: new Date(2017, 1, 1), y: 63 },
+			{ x: new Date(2017, 2, 1), y: 69 },
+			{ x: new Date(2017, 3, 1), y: 65 },
+			{ x: new Date(2017, 4, 1), y: 70 },
+			{ x: new Date(2017, 5, 1), y: 71 },
+			{ x: new Date(2017, 6, 1), y: 65 },
+			{ x: new Date(2017, 7, 1), y: 73 },
+			{ x: new Date(2017, 8, 1), y: 96 },
+			{ x: new Date(2017, 9, 1), y: 84 },
+			{ x: new Date(2017, 10, 1), y: 85 },
+			{ x: new Date(2017, 11, 1), y: 86 },
+			{ x: new Date(2017, 12, 1), y: 89 }
 		]
 	},
 	{
@@ -89,23 +86,20 @@ var options = {
 		showInLegend: true,
 		name: "Actual",
 		lineDashType: "dash",
-		yValueFormatString: "#,##0K",
+		yValueFormatString: "#,##0",
 		dataPoints: [
-			{ x: new Date(2017, 10, 1), y: 60 },
-			{ x: new Date(2017, 10, 2), y: 57 },
-			{ x: new Date(2017, 10, 3), y: 51 },
-			{ x: new Date(2017, 10, 4), y: 56 },
-			{ x: new Date(2017, 10, 5), y: 54 },
-			{ x: new Date(2017, 10, 6), y: 55 },
-			{ x: new Date(2017, 10, 7), y: 54 },
-			{ x: new Date(2017, 10, 8), y: 69 },
-			{ x: new Date(2017, 10, 9), y: 65 },
-			{ x: new Date(2017, 10, 10), y: 66 },
-			{ x: new Date(2017, 10, 11), y: 63 },
-			{ x: new Date(2017, 10, 12), y: 67 },
-			{ x: new Date(2017, 10, 13), y: 66 },
-			{ x: new Date(2017, 10, 14), y: 56 },
-			{ x: new Date(2017, 10, 15), y: 64 }
+			{ x: new Date(2017, 1, 1), y: 60 },
+			{ x: new Date(2017, 2, 1), y: 57 },
+			{ x: new Date(2017, 3, 1), y: 51 },
+			{ x: new Date(2017, 4, 1), y: 56 },
+			{ x: new Date(2017, 5, 1), y: 54 },
+			{ x: new Date(2017, 6, 1), y: 55 },
+			{ x: new Date(2017, 7, 1), y: 54 },
+			{ x: new Date(2017, 8, 1), y: 69 },
+			{ x: new Date(2017, 9, 1), y: 65 },
+			{ x: new Date(2017, 10, 1), y: 66 },
+			{ x: new Date(2017, 11, 1), y: 63 },
+			{ x: new Date(2017, 12, 1), y: 64 }
 		]
 	}]
 };
@@ -123,6 +117,29 @@ function toogleDataSeries(e){
 
 $("#tableExample").DataTable();
 
+var optionConsolidate= {
+		title: { text: "Consolidate patient view accross study per months"},
+		data:[{
+			
+		type: "column",
+		dataPoints: [
+			{label: "01/01/2017", y:56},
+			{label: "01/02/2017", y:65},
+			{label: "01/03/2017", y:72},
+			{label: "01/04/2017", y:68},
+			{label: "01/05/2017", y:69},
+			{label: "01/06/2017", y:75},
+			{label: "01/07/2017", y:56},
+			{label: "01/08/2017", y:68},
+			{label: "01/09/2017", y:82},
+			{label: "01/10/2017", y:85},
+			{label: "01/11/2017", y:89},
+			{label: "01/12/2017", y:77}
+
+			]
+		}]
+	};
+	$("#consolidateContainer").CanvasJSChart(optionConsolidate);
 }
 </script>
 

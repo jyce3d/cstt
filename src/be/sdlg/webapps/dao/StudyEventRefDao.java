@@ -16,7 +16,7 @@ public class StudyEventRefDao {
 	@Autowired 
 	JdbcTemplate jdbcTemplate;
 	
-	public static final String strSqlSelect  = "SELECT id, study_id, cohort_id, predecessor_id, site_id, study_event_model_ref_id, interval_, tol_low, tol_up FROM study_event_ref";
+	public static final String strSqlSelect  = "SELECT id, study_id, cohort_id, predecessor_id, site_id, study_event_model_ref_id, interval_, tol_low, tol_up, study_event_def_id FROM study_event_ref";
 	private class StudyEventRefRowMapper implements RowMapper<StudyEventRef> {
 
 		@Override
@@ -25,13 +25,14 @@ public class StudyEventRefDao {
 			sr.id = rs.getLong(1);
 			sr.studyId = rs.getLong(2);
 			sr.cohortId = rs.getLong(3);
-			sr.studyEventDefId = rs.getLong(4);
-			sr.predecessorId = rs.getLong(5);
-			sr.siteId = rs.getLong(6);
-			sr.studyEventModelRefId = rs.getLong(7);
-			sr.interval = rs.getFloat(8);
-			sr.tolLow = rs.getFloat(9);
-			sr.tolUp = rs.getFloat(10);
+			sr.predecessorId = rs.getLong(4);
+			sr.siteId = rs.getLong(5);
+			sr.studyEventModelRefId = rs.getLong(6);
+			sr.interval = rs.getFloat(7);
+			sr.tolLow = rs.getFloat(8);
+			sr.tolUp = rs.getFloat(9);
+			sr.studyEventDefId = rs.getLong(10);
+
 			return sr;
 		}
 	}

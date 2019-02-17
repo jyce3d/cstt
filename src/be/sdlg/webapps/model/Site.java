@@ -1,5 +1,7 @@
 package be.sdlg.webapps.model;
 
+import java.util.List;
+
 public class Site {
 	public Long id;
 	public Long countryId;
@@ -8,4 +10,7 @@ public class Site {
 	public String label;
 // Transient
 	public Country country;
+	
+	public List<WeeklyCalendar> weeklyCalendars;
+	public List<SiteCalendar> siteCalendars;
 }

@@ -33,7 +33,7 @@ public class CohortRangeDao {
 		}
 	}
 
-	public List<CohortRange> findByCohortId(String id) {
+	public List<CohortRange> findByCohortId(Long id) {
 		List<CohortRange> queryForObject = (List<CohortRange>) jdbcTemplate.query(strSqlSelect + " where cohort_id in (?) ",
 	               new Object[] { id }, new CohortRangeRowMapper());
 		return queryForObject;
