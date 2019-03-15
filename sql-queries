@@ -271,3 +271,14 @@ create table study_event_inst (
 
 );
 
+create table study_segment (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	study_id int NOT NULL,
+	segment_id int NOT NULL,
+	interval_ float(8,2),
+	predecessor_id int,
+	after_event_id int,
+	target_event_id int,
+	FOREIGN KEY(segment_id) REFERENCES segments(id),	
+	FOREIGN KEY(study_id) REFERENCES studies(id)
+);
